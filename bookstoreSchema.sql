@@ -1,0 +1,61 @@
+CREATE SCHEMA IF NOT EXISTS bookstore;
+USE bookstore;
+
+-- Drop table if exists (add tables as you go)
+DROP TABLE IF EXISTS book;
+DROP TABLE IF EXISTS author;
+
+-- Create book table
+-- id, name, description, author, year published, copies sold
+-- genre, rating, publisher, price, isbn,
+-- need to add author and publisher 
+CREATE TABLE book (
+	book_id INT NOT NULL AUTO_INCREMENT,
+    book_name VARCHAR(50) ,
+    book_description VARCHAR(150),
+    book_year VARCHAR(20),
+    copies_sold VARCHAR(20),
+    book_rating VARCHAR(10),
+    book_price VARCHAR(50),
+    isbn VARCHAR(50) ,
+    genre VARCHAR(50),
+    
+    PRIMARY KEY (book_id)
+);
+
+-- Create author table
+CREATE TABLE author (
+	author_id INT NOT NULL AUTO_INCREMENT,
+	first_name VARCHAR (50),
+    last_name VARCHAR(50),
+    biography VARCHAR(50),
+    publisher VARCHAR(50),
+    
+    PRIMARY KEY (author_id)
+);
+
+-- Create user table 
+-- credit card, username, password, name, email address, home address
+CREATE TABLE customer (
+	customer_id INT NOT NULL AUTO_INCREMENT,
+	username VARCHAR(50),
+    user_password VARCHAR(50),
+    user_first_name VARCHAR(50),
+    user_last_name VARCHAR(50),
+    email VARCHAR(50),
+    address VARCHAR(100),
+    credit_card VARCHAR(20),
+    
+    PRIMARY KEY (customer_id)
+);
+
+-- create shopping cart
+-- going to need book and user foreign key
+-- check shopping cart by userID
+-- delete book by userID and bookId
+
+-- going to need to create a comment table, which will have a comment, userID, and Book associated with it
+-- this will allow us to create books without comments, but be able to search comments by book to return all comments for a certain book
+
+
+
