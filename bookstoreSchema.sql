@@ -4,6 +4,7 @@ USE bookstore;
 -- Drop table if exists (add tables as you go)
 DROP TABLE IF EXISTS book;
 DROP TABLE IF EXISTS author;
+DROP TABLE IF EXISTS customer;
 
 -- Create book table
 -- id, name, description, author, year published, copies sold
