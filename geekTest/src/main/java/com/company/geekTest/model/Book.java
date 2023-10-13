@@ -20,11 +20,17 @@ public class Book {
     private double book_price;
     private String isbn;
     private String genre;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author_id;
+    @ManyToOne
+    @JoinColumn(name = "publisher_id")
+    private Publisher publisher_id;
 
     public Book() {
     }
 
-    public Book(Integer book_id, String book_name, String book_description, String book_year, int copies_sold, int book_rating, double book_price, String isbn, String genre) {
+    public Book(Integer book_id, String book_name, String book_description, String book_year, int copies_sold, int book_rating, double book_price, String isbn, String genre, Author author_id, Publisher publisher_id) {
         this.book_id = book_id;
         this.book_name = book_name;
         this.book_description = book_description;
@@ -34,6 +40,8 @@ public class Book {
         this.book_price = book_price;
         this.isbn = isbn;
         this.genre = genre;
+        this.author_id = author_id;
+        this.publisher_id = publisher_id;
     }
 
     public Integer getBook_id() {
@@ -106,5 +114,21 @@ public class Book {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public Author getAuthor_id() {
+        return author_id;
+    }
+
+    public void setAuthor_id(Author author_id) {
+        this.author_id = author_id;
+    }
+
+    public Publisher getPublisher_id() {
+        return publisher_id;
+    }
+
+    public void setPublisher_id(Publisher publisher_id) {
+        this.publisher_id = publisher_id;
     }
 }
