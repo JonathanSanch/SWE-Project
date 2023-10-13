@@ -5,6 +5,34 @@ USE bookstore;
 DROP TABLE IF EXISTS book;
 DROP TABLE IF EXISTS author;
 DROP TABLE IF EXISTS customer;
+drop table if exists publisher;
+
+
+-- Create publisher table
+CREATE TABLE publisher (
+	publisher_id int not null auto_increment,
+    publisher_name varchar(50),
+    
+    primary key (publisher_id)
+);
+
+
+select * from book;
+
+
+-- Create author table
+CREATE TABLE author (
+	author_id INT NOT NULL AUTO_INCREMENT,
+	first_name VARCHAR (50),
+    last_name VARCHAR(50),
+    biography VARCHAR(50),
+    
+    publisher_id int not null,
+    
+    PRIMARY KEY (author_id),
+    foreign key (publisher_id) references publisher(publisher_id)
+);
+
 
 -- Create book table
 -- id, name, description, author, year published, copies sold
@@ -21,19 +49,14 @@ CREATE TABLE book (
     isbn VARCHAR(50),
     genre VARCHAR(50),
     
-    PRIMARY KEY (book_id)
+    author_id int not null,
+    publisher_id int not null,
+    
+    PRIMARY KEY (book_id),
+    foreign key (author_id) references author(author_id),
+    foreign key (publisher_id) references publisher(publisher_id)
 );
 
--- Create author table
-CREATE TABLE author (
-	author_id INT NOT NULL AUTO_INCREMENT,
-	first_name VARCHAR (50),
-    last_name VARCHAR(50),
-    biography VARCHAR(50),
-    publisher VARCHAR(50),
-    
-    PRIMARY KEY (author_id)
-);
 
 -- Create user table 
 -- credit card, username, password, name, email address, home address
