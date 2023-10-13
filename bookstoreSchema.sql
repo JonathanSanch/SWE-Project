@@ -17,9 +17,6 @@ CREATE TABLE publisher (
 );
 
 
-select * from book;
-
-
 -- Create author table
 CREATE TABLE author (
 	author_id INT NOT NULL AUTO_INCREMENT,
