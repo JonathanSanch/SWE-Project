@@ -34,6 +34,14 @@ CREATE TABLE author (
     PRIMARY KEY (author_id)
 );
 
+-- Publisher table 
+CREATE TABLE publisher(
+	publisher_id INT NOT NULL AUTO_INCREMENT,
+	publisher_name VARCHAR(50),
+
+	PRIMARY KEY (publisher_id)
+);
+
 -- Create user table 
 -- credit card, username, password, name, email address, home address
 CREATE TABLE customer (
