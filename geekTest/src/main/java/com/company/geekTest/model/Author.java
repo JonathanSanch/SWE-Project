@@ -4,6 +4,8 @@ package com.company.geekTest.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "author")
@@ -23,16 +25,21 @@ public class Author {
     @JoinColumn(name = "publisher_id")
     private Publisher publisher_id; //need to change to a Publisher object later once model is made
 
+
+    /*@OneToMany(mappedBy = "author_id")
+    private List<Book> books;*/
+
+
     public Author() {
     }
 
-    /*public Author(Integer author_id, String first_name, String last_name, String biography, List<Book> books, String publisher) {
+/*    public Author(Integer author_id, String first_name, String last_name, String biography, List<Book> books, Publisher publisher_id) {
         this.author_id = author_id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.biography = biography;
         this.books = books;
-        this.publisher = publisher;
+        this.publisher_id = publisher_id;
     }*/
 
     public Author(Integer author_id, String first_name, String last_name, String biography, Publisher publisher_id) {
@@ -83,7 +90,7 @@ public class Author {
         this.publisher_id = publisher_id;
     }
 
-   /* public List<Book> getBooks() {
+  /*  public List<Book> getBooks() {
         return books;
     }
 
