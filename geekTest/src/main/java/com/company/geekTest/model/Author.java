@@ -20,29 +20,14 @@ public class Author {
     private String first_name;
     private String last_name;
     private String biography;
-
     @ManyToOne
     @JoinColumn(name = "publisher_id")
     private Publisher publisher_id; //need to change to a Publisher object later once model is made
 
-
-    /*@OneToMany(mappedBy = "author_id")
-    private List<Book> books;*/
-
-
     public Author() {
     }
 
-/*    public Author(Integer author_id, String first_name, String last_name, String biography, List<Book> books, Publisher publisher_id) {
-        this.author_id = author_id;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.biography = biography;
-        this.books = books;
-        this.publisher_id = publisher_id;
-    }*/
-
-    public Author(Integer author_id, String first_name, String last_name, String biography, Publisher publisher_id) {
+    public Author(int author_id, String first_name, String last_name, String biography, Publisher publisher_id) {
         this.author_id = author_id;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -89,14 +74,4 @@ public class Author {
     public void setPublisher_id(Publisher publisher_id) {
         this.publisher_id = publisher_id;
     }
-
-  /*  public List<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(List<Book> books) {
-        this.books = books;
-    }*/
-
-
 }

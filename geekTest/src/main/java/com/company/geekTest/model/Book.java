@@ -15,11 +15,17 @@ public class Book {
     private String book_name;
     private String book_description;
     private String book_year;
-    private String copies_sold;
-    private String book_rating;
-    private String book_price;
+    private int copies_sold;
+    private int book_rating;
+    private double book_price;
     private String isbn;
     private String genre;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author_id;
+    @ManyToOne
+    @JoinColumn(name = "publisher_id")
+    private Publisher publisher_id;
 
     @ManyToOne
     @JoinColumn(name = "author_id")
@@ -77,27 +83,27 @@ public class Book {
         this.book_year = book_year;
     }
 
-    public String getCopies_sold() {
+    public int getCopies_sold() {
         return copies_sold;
     }
 
-    public void setCopies_sold(String copies_sold) {
+    public void setCopies_sold(int copies_sold) {
         this.copies_sold = copies_sold;
     }
 
-    public String getBook_rating() {
+    public int getBook_rating() {
         return book_rating;
     }
 
-    public void setBook_rating(String book_rating) {
+    public void setBook_rating(int book_rating) {
         this.book_rating = book_rating;
     }
 
-    public String getBook_price() {
+    public double getBook_price() {
         return book_price;
     }
 
-    public void setBook_price(String book_price) {
+    public void setBook_price(double book_price) {
         this.book_price = book_price;
     }
 
