@@ -37,9 +37,9 @@ public class BookController {
 
 
     //get a list of the top 10 selling books
-    @GetMapping("/books/topTen")
-    public List<Book> getTopTen(){
-        return repository.getTopTen();
+    @GetMapping("/books/topSellers")
+    public List<Book> getTopSellers(){
+        return repository.getTopSellers();
     }
 
 

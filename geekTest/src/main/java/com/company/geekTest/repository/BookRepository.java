@@ -22,7 +22,7 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
 
     @Query(value = "SELECT * FROM book a ORDER BY a.copies_sold DESC LIMIT 10", nativeQuery = true)
-    List<Book> getTopTen();
+    List<Book> getTopSellers();
 
    // List<Book> findByAuthorId(Author author_id);     // **WIP****
 
