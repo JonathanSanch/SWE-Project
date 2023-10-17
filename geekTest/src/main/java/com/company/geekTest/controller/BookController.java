@@ -28,6 +28,13 @@ public class BookController {
     }
 
 
+    @GetMapping("/books/genre/{genre}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<Book> getBooksByGenre(@PathVariable String genre){
+        return repository.findByGenre(genre);
+    }
+
+
     // Retrieve a book's details by the ISBN
     @GetMapping("/books/isbn/{isbn}")
     @ResponseStatus(HttpStatus.ACCEPTED)
