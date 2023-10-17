@@ -28,10 +28,18 @@ public class BookController {
     }
 
 
+    //Retrieve books by genre
     @GetMapping("/books/genre/{genre}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<Book> getBooksByGenre(@PathVariable String genre){
         return repository.findByGenre(genre);
+    }
+
+
+    //get a list of the top 10 selling books
+    @GetMapping("/books/topTen")
+    public List<Book> getTopTen(){
+        return repository.getTopTen();
     }
 
 
