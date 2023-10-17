@@ -38,8 +38,15 @@ public class BookController {
 
     //get a list of the top 10 selling books
     @GetMapping("/books/topSellers")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public List<Book> getTopSellers(){
         return repository.getTopSellers();
+    }
+
+    @GetMapping("/books/rating/{rating}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<Book> getBooksByRating(@PathVariable float rating){
+        return repository.getBetterThanRating(rating);
     }
 
 
