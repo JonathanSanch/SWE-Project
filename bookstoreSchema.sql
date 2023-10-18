@@ -41,7 +41,7 @@ CREATE TABLE book (
     book_description VARCHAR(150),
     book_year VARCHAR(20),
     copies_sold INT(10),
-    book_rating INT(1),
+    book_rating float,
     book_price DOUBLE,
     isbn VARCHAR(50),
     genre VARCHAR(50),
