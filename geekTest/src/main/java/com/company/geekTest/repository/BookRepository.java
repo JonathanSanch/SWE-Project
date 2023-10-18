@@ -26,7 +26,7 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
 
     @Query(value = "SELECT * FROM book a WHERE a.book_rating >= :rating", nativeQuery = true)
-    List<Book> getBetterThanRating(float rating);
+    List<Book> getBetterThanRating(@Param("rating") float rating);
 
 
    // List<Book> findByAuthorId(Author author_id);     // **WIP****
