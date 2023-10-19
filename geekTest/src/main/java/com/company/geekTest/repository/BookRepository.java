@@ -21,12 +21,22 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     List<Book> findByGenre(String genre);
 
 
+    //returns a list of 10 books sorted by most copies sold
     @Query(value = "SELECT * FROM book a ORDER BY a.copies_sold DESC LIMIT 10", nativeQuery = true)
     List<Book> getTopSellers();
 
 
+    //returns a list of all books with a rating greater than or equal to the rating passed.
     @Query(value = "SELECT * FROM book a WHERE a.book_rating >= :rating", nativeQuery = true)
     List<Book> getBetterThanRating(@Param("rating") float rating);
+
+    //returns a list of all books under a certain publisher using either the publisher ID or the publisher name
+    //
+    @Query(value = "select * from book a, publisher b where a.publisher_id = (select b.publisher_id where b.publisher_name = :publisher)", nativeQuery = true)
+    List<Book> findByPublisher(@Param("publisher") String publisher);
+
+    @Query(value = "select * from book a where a.publisher_id = :publisher", nativeQuery = true)
+    List<Book> findByPublisher(@Param("publisher") int publisher);
 
 
    // List<Book> findByAuthorId(Author author_id);     // **WIP****
