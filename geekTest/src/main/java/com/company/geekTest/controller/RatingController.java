@@ -34,6 +34,18 @@ public class RatingController {
         repository.deleteById(id);
     }
 
+
+    @GetMapping("/ratings/average/book/{book_id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public ResponseEntity<Double> getAverageRatingForBook(@PathVariable int book_id) {
+        Double averageRating = repository.getAverageRatingForBook(book_id);
+
+
+            return new ResponseEntity<>(averageRating, HttpStatus.ACCEPTED);
+
+
+    }
+
     /*@GetMapping( "/ratings/book/{book_id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<List<Rating>> getRatingByBook(@PathVariable int book_id) {

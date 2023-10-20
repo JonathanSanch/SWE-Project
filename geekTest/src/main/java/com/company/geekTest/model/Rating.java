@@ -3,7 +3,6 @@ package com.company.geekTest.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import org.hibernate.annotations.CollectionId;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,7 +26,6 @@ public class Rating {
     private Book book;
     @Column(name = "date_stamp")
     private String dateStamp;
-
 
 
     public Rating() {
@@ -70,7 +68,7 @@ public class Rating {
         return dateStamp;
     }
     public void setDateStamp(String dateStamp) {
-        this.dateStamp = dateStamp;
+        this.dateStamp = this.dateStamp;
     }
     @PrePersist
     protected void onCreate() {

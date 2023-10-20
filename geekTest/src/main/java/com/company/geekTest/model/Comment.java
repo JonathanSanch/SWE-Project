@@ -19,21 +19,21 @@ public class Comment {
     private String userComment;
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Customer customer_id;
+    private Customer customer;
     @ManyToOne
     @JoinColumn(name = "book_id")
-    private Book book_id;
+    private Book book;
     @Column(name = "date_stamp")
     private String dateStamp;
     public Comment() {
 
     }
 
-    public Comment(Integer comment_id, String userComment, Customer customer_id, Book book_id, String dateStamp) {
+    public Comment(Integer comment_id, String userComment, Customer customer, Book book, String dateStamp) {
         this.comment_id = comment_id;
         this.userComment = userComment;
-        this.customer_id = customer_id;
-        this.book_id = book_id;
+        this.customer = customer;
+        this.book = book;
         this.dateStamp = dateStamp;
 
     }
@@ -50,16 +50,16 @@ public class Comment {
         this.userComment = userComment;
     }
     public Customer getCustomer() {
-        return customer_id;
+        return customer;
     }
     public void setCustomer(Customer customer_id) {
-        this.customer_id = customer_id;
+        this.customer = customer_id;
     }
     public Book getBook() {
-        return book_id;
+        return book;
     }
-    public void setBook(Book book_id) {
-        this.book_id = book_id;
+    public void setBook(Book book) {
+        this.book = book;
     }
     public String getDateStamp() {
         return dateStamp;

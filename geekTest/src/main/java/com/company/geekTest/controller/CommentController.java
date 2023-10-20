@@ -1,10 +1,9 @@
 package com.company.geekTest.controller;
-
 import com.company.geekTest.model.Comment;
-import com.company.geekTest.model.Book;
 import com.company.geekTest.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +18,7 @@ public class CommentController {
    public List<Comment> getAllComments() {
        return repository.findAll();
    }
+
    @PostMapping( "/comments")
    @ResponseStatus(HttpStatus.NO_CONTENT)
    public void addComment(@RequestBody Comment comment) {
@@ -31,11 +31,13 @@ public class CommentController {
         repository.deleteById(id);
     }
 
-    /*@GetMapping("/comments/book/{book_id}")
-    @ResponseStatus(HttpStatus.FOUND)
-    public List<Comment> getCommentByBookId(@PathVariable int book_id) {
-       return repository.findCommentsByBookbook_id(book_id);
+    @GetMapping("/comments/book/{book_id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public ResponseEntity<List<String>> getCommentsForBook(@PathVariable int book_id) {
+       List<String> bookComments = repository.getCommentsForBook(book_id);
+
+        return new ResponseEntity<>(bookComments, HttpStatus.ACCEPTED);
     }
-*/
+
 
 }
