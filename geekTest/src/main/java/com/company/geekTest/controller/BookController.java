@@ -5,6 +5,7 @@ import com.company.geekTest.model.Book;
 /*import com.company.geekTest.model.Customer;*/
 import com.company.geekTest.repository.AuthorRepository;
 import com.company.geekTest.repository.BookRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,10 +44,19 @@ public class BookController {
         return repository.getTopSellers();
     }
 
+    //get a list of books by a certain rating or higher
     @GetMapping("/books/rating/{rating}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<Book> getBooksByRating(@PathVariable float rating){
         return repository.getBetterThanRating(rating);
+    }
+
+    //discount books by publisher using publisher ID
+    @PutMapping("/books/discount/{publisher}/{discount}")
+    @Transactional
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void discountByPublisher(@PathVariable int publisher, @PathVariable float discount){
+        repository.discountByPublisher(discount, publisher);
     }
 
 

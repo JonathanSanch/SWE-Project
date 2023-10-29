@@ -4,6 +4,7 @@ import com.company.geekTest.model.Author;
 import com.company.geekTest.model.Book;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -37,6 +38,10 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
     @Query(value = "select * from book a where a.publisher_id = :publisher", nativeQuery = true)
     List<Book> findByPublisher(@Param("publisher") int publisher);
+
+    @Modifying
+    @Query(value = "update book set book_price = TRUNCATE((book_price * :discount), 2) where publisher_id = :publisher", nativeQuery = true)
+    void discountByPublisher(@Param("discount") float discount, @Param("publisher") int publisher);
 
 
    // List<Book> findByAuthorId(Author author_id);     // **WIP****
