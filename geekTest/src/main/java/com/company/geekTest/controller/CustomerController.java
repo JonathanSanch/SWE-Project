@@ -32,6 +32,18 @@ public class CustomerController
         repository.deleteById(id);
     }
 
+    @GetMapping("/customers/username/{username}")
+    @ResponseStatus(HttpStatus.OK)
+    public Customer getCustomerByUsername(@PathVariable String username) {
+        Customer customer = repository.findByUsername(username);
+        if (customer == null) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Customer not found"
+            );
+        }
+        return customer;
+    }
+
 
 
 }
