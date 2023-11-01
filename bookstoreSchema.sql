@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS book;
 DROP TABLE IF EXISTS author;
 DROP TABLE IF EXISTS customer;
 drop table if exists publisher;
+drop table if exists shopping_cart;
 
 
 -- Create publisher table
@@ -71,6 +72,18 @@ CREATE TABLE customer (
 );
 
 -- create shopping cart
+
+CREATE TABLE shopping_cart(
+	cart_id INT NOT NULL AUTO_INCREMENT,
+    customer_id INT NOT NULL,
+    book_id INT NOT NULL,
+    quantity INT,
+    date_added timestamp,
+    
+    foreign key (customer_id) references customer(customer_id),
+    foreign key (book_id) references book(book_id)
+);
+
 -- going to need book and user foreign key
 -- check shopping cart by userID
 -- delete book by userID and bookId
