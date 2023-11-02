@@ -59,6 +59,12 @@ public class BookController {
         repository.discountByPublisher(discount, publisher);
     }
 
+    @GetMapping("/books/publisher/{publisherID}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<Book> getBooksByPublisher(@PathVariable int publisherID){
+        return repository.findByPublisher(publisherID);
+    }
+
 
     // Retrieve a book's details by the ISBN
     @GetMapping("/books/isbn/{isbn}")
