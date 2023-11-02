@@ -5,6 +5,7 @@ import com.company.geekTest.model.Book;
 /*import com.company.geekTest.model.Customer;*/
 import com.company.geekTest.repository.AuthorRepository;
 import com.company.geekTest.repository.BookRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,43 @@ public class BookController {
     @GetMapping("/books")
     public List<Book> getAllBooks() {
         return repository.findAll();
+    }
+
+
+    //Retrieve books by genre
+    @GetMapping("/books/genre/{genre}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<Book> getBooksByGenre(@PathVariable String genre){
+        return repository.findByGenre(genre);
+    }
+
+
+    //get a list of the top 10 selling books
+    @GetMapping("/books/topSellers")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<Book> getTopSellers(){
+        return repository.getTopSellers();
+    }
+
+    //get a list of books by a certain rating or higher
+    @GetMapping("/books/rating/{rating}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<Book> getBooksByRating(@PathVariable float rating){
+        return repository.getBetterThanRating(rating);
+    }
+
+    //discount books by publisher using publisher ID
+    @PutMapping("/books/discount/{publisher}/{discount}")
+    @Transactional
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void discountByPublisher(@PathVariable int publisher, @PathVariable float discount){
+        repository.discountByPublisher(discount, publisher);
+    }
+
+    @GetMapping("/books/publisher/{publisherID}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<Book> getBooksByPublisher(@PathVariable int publisherID){
+        return repository.findByPublisher(publisherID);
     }
 
 
