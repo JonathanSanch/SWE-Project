@@ -30,7 +30,7 @@ public class RatingController {
 
     @DeleteMapping("/ratings/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCustomerById(@PathVariable int id) {
+    public void deleteRatingById(@PathVariable int id) {
         repository.deleteById(id);
     }
 
@@ -45,19 +45,4 @@ public class RatingController {
 
 
     }
-
-    /*@GetMapping( "/ratings/book/{book_id}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public ResponseEntity<List<Rating>> getRatingByBook(@PathVariable int book_id) {
-        List<Rating> ratings = repository.findByBook_book_id(book_id);
-
-        if(ratings.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity<>(ratings, HttpStatus.ACCEPTED);
-        }
-
-    }*/
-
-
 }
