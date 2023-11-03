@@ -21,6 +21,9 @@ public class Customer
     private String address;
     private String credit_card;
 
+    @OneToOne(mappedBy = "customer")
+    private ShoppingCart shoppingCart;
+
     public Customer(){}
 
 

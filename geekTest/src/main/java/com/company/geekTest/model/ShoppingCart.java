@@ -15,13 +15,13 @@ public class ShoppingCart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cart_id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Customer customer_id;
+    private Customer customer;
 
     @ManyToOne
     @JoinColumn(name = "book_id")
-    private Book book_id;
+    private Book book;
     private int quantity;
     private Date date_added;
 
@@ -29,8 +29,8 @@ public class ShoppingCart {
 
     public ShoppingCart(Integer cart_id, Customer customer_id, Book book_id, int quantity, Date date_added) {
         this.cart_id = cart_id;
-        this.customer_id = customer_id;
-        this.book_id = book_id;
+        this.customer = customer_id;
+        this.book = book_id;
         this.quantity = quantity;
         this.date_added = date_added;
     }
@@ -44,19 +44,19 @@ public class ShoppingCart {
     }
 
     public Customer getCustomer_id() {
-        return customer_id;
+        return customer;
     }
 
     public void setCustomer_id(Customer customer_id) {
-        this.customer_id = customer_id;
+        this.customer = customer_id;
     }
 
     public Book getBook_id() {
-        return book_id;
+        return book;
     }
 
     public void setBook_id(Book book_id) {
-        this.book_id = book_id;
+        this.book = book_id;
     }
 
     public int getQuantity() {
