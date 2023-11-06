@@ -26,7 +26,7 @@ public class Book {
     private Author author;
     @ManyToOne
     @JoinColumn(name = "publisher_id")
-    private Publisher publisher;
+    private Publisher publisher_id;
 
     public Book() {
     }
@@ -42,7 +42,7 @@ public class Book {
         this.isbn = isbn;
         this.genre = genre;
         this.author = author;
-        this.publisher = publisher;
+        this.publisher_id = publisher;
     }
 
     public Integer getBook_id() {
@@ -126,10 +126,10 @@ public class Book {
     }
 
     public Publisher getPublisher() {
-        return publisher;
+        return publisher_id;
     }
 
     public void setPublisher(Publisher publisher) {
-        this.publisher = publisher;
+        this.publisher_id = publisher;
     }
 }
