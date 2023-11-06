@@ -16,7 +16,7 @@ public class Book {
     private String book_description;
     private String book_year;
     private Integer copies_sold;
-    private Integer book_rating;
+    private float book_rating;
     private double book_price;
     private String isbn;
     private String genre;
@@ -31,7 +31,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(Integer book_id, String book_name, String book_description, String book_year, Integer copies_sold, Integer book_rating, double book_price, String isbn, String genre, Author author, Publisher publisher) {
+    public Book(Integer book_id, String book_name, String book_description, String book_year, Integer copies_sold, float book_rating, double book_price, String isbn, String genre, Author author, Publisher publisher) {
         this.book_id = book_id;
         this.book_name = book_name;
         this.book_description = book_description;
@@ -85,11 +85,11 @@ public class Book {
         this.copies_sold = copies_sold;
     }
 
-    public Integer getBook_rating() {
+    public float getBook_rating() {
         return book_rating;
     }
 
-    public void setBook_rating(Integer book_rating) {
+    public void setBook_rating(float book_rating) {
         this.book_rating = book_rating;
     }
 
