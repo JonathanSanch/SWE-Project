@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController("wishlist")
-public class WishlistController {
+public class WishlistController  {
 
     @Autowired
     WishlistRepository repository;
