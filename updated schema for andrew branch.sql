@@ -5,7 +5,7 @@ USE bookstore;
 DROP TABLE IF EXISTS book;
 DROP TABLE IF EXISTS author;
 DROP TABLE IF EXISTS customer;
-drop table if exists publisher;
+drop table if exists publisher, comment, rating;
 
 
 -- Create publisher table
@@ -69,6 +69,29 @@ CREATE TABLE customer (
     
     PRIMARY KEY (customer_id)
 );
+
+-- create comment table
+CREATE TABLE comment (
+	comment_id INT NOT NULL AUTO_INCREMENT,
+	user_comment VARCHAR(200),
+    customer_id INT(10),
+    book_id INT(10),
+    date_stamp VARCHAR(30),
+    
+    PRIMARY KEY (comment_id)
+    );
+    
+-- create rating table
+CREATE TABLE rating (
+	rating_id INT NOT NULL AUTO_INCREMENT,
+    user_rating INT(10),
+    customer_id INT(10),
+    book_id INT(10),
+    date_stamp VARCHAR(30),
+    
+    PRIMARY KEY (rating_id)
+    );
+
 
 -- create shopping cart
 -- going to need book and user foreign key

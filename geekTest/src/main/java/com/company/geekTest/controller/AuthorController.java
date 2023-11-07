@@ -2,7 +2,9 @@ package com.company.geekTest.controller;
 
 
 import com.company.geekTest.model.Author;
+import com.company.geekTest.model.Book;
 import com.company.geekTest.repository.AuthorRepository;
+import com.company.geekTest.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,7 @@ public class AuthorController {
 
     @Autowired
     AuthorRepository repository;
+
 
     @GetMapping("/authors")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -29,9 +32,10 @@ public class AuthorController {
 
     @DeleteMapping("/authors/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteAuthorById(@PathVariable int id) {
-        repository.deleteById(id);
+    public void deleteAuthorById(@PathVariable Integer author_id) {
+        repository.deleteById(author_id);
     }
+
 
 
 }
