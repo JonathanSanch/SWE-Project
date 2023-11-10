@@ -31,6 +31,20 @@ public class Book {
     public Book() {
     }
 
+    /**
+     * Creates a new Book that is linked to an Author and Publisher
+     * @param book_id  Primary identifier key for database
+     * @param book_name  Name associated with a book, not used to locate
+     * @param book_description  Brief synopsis
+     * @param book_year  Year the book released, expressed as a String
+     * @param copies_sold  Amount of books sold, as a float
+     * @param book_rating  Rating for book, expressed as int
+     * @param book_price   Price associated for specific book, expressed as double
+     * @param isbn  Used to find a specific book, unique and not auto-incremented by database
+     * @param genre  Used to further sort books by common themes
+     * @param author  Linked to a foreign Author object by the author_id
+     * @param publisher  Linked to a foreign Publisher object by publisher_id
+     */
     public Book(Integer book_id, String book_name, String book_description, String book_year, int copies_sold, float book_rating, double book_price, String isbn, String genre, Author author, Publisher publisher) {
         this.book_id = book_id;
         this.book_name = book_name;

@@ -21,14 +21,21 @@ public class Author {
 
     @ManyToOne
     @JoinColumn(name = "publisher_id")
-    private Publisher publisher; //need to change to a Publisher object later once model is made
+    private Publisher publisher;
 
 
 
     public Author() {
     }
 
-
+    /**
+     * Creates a new Author object with a Publisher
+     * @param author_id  Primary identifier for each Author, auto-incremented by database
+     * @param first_name
+     * @param last_name
+     * @param biography  Brief summary
+     * @param publisher  Links to Publisher that Author is linked to
+     */
     public Author(Integer author_id, String first_name, String last_name, String biography, Publisher publisher) {
         this.author_id = author_id;
         this.first_name = first_name;

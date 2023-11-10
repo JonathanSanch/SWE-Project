@@ -18,10 +18,6 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
     List<Book> findByIsbn(String isbn);
 
-   // List<Book> findByAuthorId(Author author_id);     // **WIP****
-
-
-    /*@Query(value = "SELECT * FROM Author a FETCH JOIN a.books b WHERE a.author_id = b.author")*/   ///WIP 2nd Option
     List<Book> findByAuthorId(Integer author_id);
 
 }
