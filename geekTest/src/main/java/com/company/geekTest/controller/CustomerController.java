@@ -1,12 +1,11 @@
 package com.company.geekTest.controller;
-
 import com.company.geekTest.model.Customer;
 import com.company.geekTest.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.List;
 
 @RestController
@@ -67,16 +66,23 @@ public class CustomerController
         repository.save(existingCustomer);
     }
 
-    //Create credit card
     @PostMapping("/customers/username/{username}/creditcard")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addCreditCardToUser(@PathVariable String username, @RequestBody String creditCard) {
+    public ResponseEntity<?> addCreditCardToUser(@PathVariable String username, @RequestBody String creditCard) {
         Customer customer = repository.findByUsername(username);
         if (customer == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer not found");
         }
+
+        // Check if the customer already has a credit card
+        if (customer.getCredit_card() != null) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Customer already has a credit card.");
+        }
+
         customer.setCredit_card(creditCard);
         repository.save(customer);
+
+        return ResponseEntity.ok().build();
     }
 
 
